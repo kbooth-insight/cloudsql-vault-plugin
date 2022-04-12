@@ -21,7 +21,8 @@ jobs:
           go-version: '>=1.18.0'
       - run: go version
       - name:  Build vault
-        run: go build ./plugins/database/postgresql/postgresql-database-plugin -o cloudsql-iap-vault-plugin_$GOOS_$GOARCH
+        run: go build -o cloudsql-iap-vault-plugin_${GOOS}_${GOARCH}
+        working-directory: ./plugins/database/postgresql/postgresql-database-plugin
         env:
           GOOS: "${{ matrix.goos }}"
           GOARCH: "${{ matrix.goarch }}"
