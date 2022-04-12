@@ -8,12 +8,12 @@ on:
 jobs:
   run:
     name: Run
-    runs-on: ${{ matrix.goos }}
+    runs-on: ${{ matrix.runner-os }}
     strategy:
       matrix:
         runner-os: [ubuntu-latest]
         goos: [linux, darwin]
-        goarch: [amd64, arm64]
+        goarch: [amd64]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
