@@ -19,7 +19,7 @@ import (
 )
 
 const (
-	postgreSQLTypeName         = "postgres"
+	postgreSQLTypeName         = "cloudsqlpostgres"
 	defaultExpirationStatement = `
 ALTER ROLE "{{name}}" VALID UNTIL '{{expiration}}';
 `

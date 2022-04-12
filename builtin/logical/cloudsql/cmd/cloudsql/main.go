@@ -3,9 +3,9 @@ package main
 import (
 	"os"
 
+	"github.com/Insight-NA/cloudsql-vault-auth-iap-plugin/builtin/logical/cloudsql"
 	hclog "github.com/hashicorp/go-hclog"
 	"github.com/hashicorp/vault/api"
-	"github.com/hashicorp/vault/builtin/logical/postgresql"
 	"github.com/hashicorp/vault/sdk/plugin"
 )
 
@@ -18,7 +18,7 @@ func main() {
 	tlsProviderFunc := api.VaultPluginTLSProvider(tlsConfig)
 
 	if err := plugin.Serve(&plugin.ServeOpts{
-		BackendFactoryFunc: postgresql.Factory,
+		BackendFactoryFunc: cloudsql.Factory,
 		TLSProviderFunc:    tlsProviderFunc,
 	}); err != nil {
 		logger := hclog.New(&hclog.LoggerOptions{})

@@ -1,4 +1,4 @@
-package postgresql
+package cloudsql
 
 import (
 	"context"
@@ -109,13 +109,6 @@ func (b *backend) pathConnectionWrite(ctx context.Context, req *logical.Request,
 	// Don't check the connection_url if verification is disabled
 	verifyConnection := data.Get("verify_connection").(bool)
 	if verifyConnection {
-		host := "booth-custom-plugin-tests:us-central1:booth-test"
-		//username := "kevin.booth@insight.com"
-		username := "postgres"
-		dbname := "postgres"
-		password := "C@rdinal2030"
-		// Verify the string
-		connURL = fmt.Sprintf("host=%s dbname=%s sslmode=disable user=%s password=%s", host, dbname, username, password)
 		db, err := sql.Open("cloudsqlpostgres", connURL)
 		if err != nil {
 			return logical.ErrorResponse(fmt.Sprintf(
@@ -168,8 +161,10 @@ This path configures the connection string used to connect to PostgreSQL.
 The value of the string can be a URL, or a PG style string in the
 format of "user=foo host=bar" etc.
 
+
+
 The URL looks like:
-"cloudsql-database-plugin://user:pass@host:port/dbname"
+"postgresql://user:pass@host:port/dbname"
 
 When configuring the connection string, the backend will verify its validity.
 `

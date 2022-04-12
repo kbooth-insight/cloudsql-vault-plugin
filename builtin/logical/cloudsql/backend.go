@@ -1,4 +1,4 @@
-package postgresql
+package cloudsql
 
 import (
 	"context"
@@ -101,7 +101,7 @@ func (b *backend) DB(ctx context.Context, s logical.Storage) (*sql.DB, error) {
 	}
 
 	// Ensure timezone is set to UTC for all the connections
-	if strings.HasPrefix(conn, "postgres://") || strings.HasPrefix(conn, "cloudsql-database-plugin://") {
+	if strings.HasPrefix(conn, "postgres://") || strings.HasPrefix(conn, "postgresql://") {
 		if strings.Contains(conn, "?") {
 			conn += "&timezone=utc"
 		} else {
@@ -111,7 +111,7 @@ func (b *backend) DB(ctx context.Context, s logical.Storage) (*sql.DB, error) {
 		conn += " timezone=utc"
 	}
 
-	b.db, err = sql.Open("postgres", conn)
+	b.db, err = sql.Open("cloudsqlpostgres", conn)
 	if err != nil {
 		return nil, err
 	}

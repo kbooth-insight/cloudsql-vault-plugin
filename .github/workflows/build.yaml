@@ -16,13 +16,24 @@ jobs:
         goarch: [amd64]
     steps:
       - uses: actions/checkout@v3
+      - name: 'Authenticate to Google Cloud'
+        uses: google-github-actions/auth@v0
+        id: "auth"
+        with:
+          credentials_json: "${{ secrets.GOOGLE_CREDENTIALS }}"
       - uses: actions/setup-go@v3
         with:
           go-version: '>=1.18.0'
-      - run: go version
+      - name: Run cloudsql plugin stests
+        run: go test plugins/database/cloudsql
       - name:  Build vault
         run: go build -o cloudsql-database-plugin-iap-vault-plugin_${GOOS}_${GOARCH}
         working-directory: plugins/database/cloudsql/cloudsql-database-plugin
         env:
           GOOS: "${{ matrix.goos }}"
           GOARCH: "${{ matrix.goarch }}"
+      - name: Smoke test cloudsql plugin
+        run: |
+          
+
+

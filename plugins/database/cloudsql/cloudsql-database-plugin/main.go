@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/hashicorp/vault/plugins/database/postgresql"
+	"github.com/Insight-NA/cloudsql-vault-auth-iap-plugin/plugins/database/cloudsql"
 	dbplugin "github.com/hashicorp/vault/sdk/database/dbplugin/v5"
 )
 
@@ -18,7 +18,7 @@ func main() {
 
 // Run instantiates a PostgreSQL object, and runs the RPC server for the plugin
 func Run() error {
-	dbType, err := postgresql.New()
+	dbType, err := cloudsql.New()
 	if err != nil {
 		return err
 	}
