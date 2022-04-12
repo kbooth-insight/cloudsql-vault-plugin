@@ -1,0 +1,21 @@
+name: build-test
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - kb/*
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.goos }}
+    strategy:
+      matrix:
+        goos: [ubuntu-latest]
+        goarch: [amd64]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.18.0'
+      - run: go version
