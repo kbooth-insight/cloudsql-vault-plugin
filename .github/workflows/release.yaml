@@ -1,0 +1,10 @@
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.runner-os }}
+steps:
+  - run: ls

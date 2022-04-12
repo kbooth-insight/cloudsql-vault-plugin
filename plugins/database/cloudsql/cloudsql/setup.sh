@@ -5,7 +5,7 @@ vault secrets disable database
 vault secrets enable database
 
  vault write \
-    database/config/my-postgresql-database \
+    database/config/my-cloudsql-database \
     plugin_name="postgresql-database-plugin" \
     allowed_roles="root" \
     connection_url="booth-custom-plugin-tests:us-central1:booth-test" \

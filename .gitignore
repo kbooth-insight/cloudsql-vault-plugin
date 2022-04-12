@@ -1,4 +1,4 @@
 .idea
 
 **/bin
-plugins/database/postgresql/postgresql-database-plugin/*
+plugins/database/cloudsql/cloudsql/*
