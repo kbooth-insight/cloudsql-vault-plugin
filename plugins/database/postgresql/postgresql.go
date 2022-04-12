@@ -33,6 +33,8 @@ ALTER ROLE "{{username}}" WITH PASSWORD '{{password}}';
 )
 
 var (
+	conUtilePostgres = &PostgreSQL{}
+
 	_ dbplugin.Database = &PostgreSQL{}
 
 	// postgresEndStatement is basically the word "END" but

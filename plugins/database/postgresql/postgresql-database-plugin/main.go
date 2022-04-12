@@ -23,6 +23,7 @@ func Run() error {
 		return err
 	}
 
+	//dbplugin.
 	dbplugin.Serve(dbType.(dbplugin.Database))
 
 	return nil
