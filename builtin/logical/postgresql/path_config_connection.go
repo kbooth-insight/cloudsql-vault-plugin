@@ -169,7 +169,7 @@ The value of the string can be a URL, or a PG style string in the
 format of "user=foo host=bar" etc.
 
 The URL looks like:
-"cloudsql://user:pass@host:port/dbname"
+"cloudsql-database-plugin://user:pass@host:port/dbname"
 
 When configuring the connection string, the backend will verify its validity.
 `

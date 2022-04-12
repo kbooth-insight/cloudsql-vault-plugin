@@ -21,8 +21,8 @@ jobs:
           go-version: '>=1.18.0'
       - run: go version
       - name:  Build vault
-        run: go build -o cloudsql-iap-vault-plugin_${GOOS}_${GOARCH}
-        working-directory: ./plugins/database/cloudsql/cloudsql-database-plugin
+        run: go build -o cloudsql-database-plugin-iap-vault-plugin_${GOOS}_${GOARCH}
+        working-directory: plugins/database/cloudsql/cloudsql-database-plugin
         env:
           GOOS: "${{ matrix.goos }}"
           GOARCH: "${{ matrix.goarch }}"

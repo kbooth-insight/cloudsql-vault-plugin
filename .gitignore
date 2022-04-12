@@ -1,4 +1,4 @@
 .idea
 
 **/bin
-plugins/database/cloudsql/cloudsql/*
+plugins/database/cloudsql/cloudsql-database-plugin/*
