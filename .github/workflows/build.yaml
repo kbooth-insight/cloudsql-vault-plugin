@@ -23,5 +23,5 @@ jobs:
       - name:  Build vault
         run: go build ./plugins/database/postgresql/postgresql-database-plugin -o cloudsql-iap-vault-plugin_$GOOS_$GOARCH
         env:
-          GOOS: "{{ matrix.goos }}"
-          GOARCH: "{{ matrix.goarch }}"
+          GOOS: "${{ matrix.goos }}"
+          GOARCH: "${{ matrix.goarch }}"
